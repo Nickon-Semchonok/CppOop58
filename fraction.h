@@ -23,5 +23,5 @@ public:                     // За рекомендаціями ООП поля
 	fraction_t(fraction_t&);
 	//fraction_t(fraction_t&&);
 
-	// ~fraction_t();
+	~fraction_t();
 };

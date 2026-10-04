@@ -68,6 +68,12 @@ std::string fraction_t::to_string() {
 	return std::format("({}/{})", numerator, denominator);
 }
 
+fraction_t::~fraction_t() {
+	// задача дестректора - звільнити ресурси об'єкта
+	if (name != NULL) {
+		delete[] name;
+	}
+}
 /*
 Д.З. Описати клас, що задає вектор на площині (vector_2 / vector2_t)
 склад: 2 поля-координати х та у (дробові)
