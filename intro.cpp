@@ -3,26 +3,39 @@
 #include "fraction.h"
 
 void intro() {
-	// зауск демострації
+	// запуск демонстрації
 	std::cout << "Intro to OOP" << std::endl;
 	// створення об'єктів
-	fraction_t frac1;  // статичне оголошення - об'єкту у стеку
-	fraction_t* frac2 = new fraction_t; // динамічне оголошення - об"єкт у "купі"
-	std::cout                               //  без ініціалізації бачимо випадклві числа
-		<< frac1.to_string() << std::endl
-		<< frac2->to_string() << std::endl;
+	fraction_t frac1;   // статичне оголошення - об'єкт у стеку
+	fraction_t* frac2 = new fraction_t;  // динамічне оголошення - об'єкт у "купі"
+	std::cout                                // без ініціалізації бачимо випадкові числа 
+		<< frac1.to_string() << std::endl    // до об'єктів звертаємось через "."
+		<< frac2->to_string() << std::endl;  // до покажчиків - через "->"
 
-	fraction_t frac3(10);  // статичне оголошення - об'єкту у стеку
-	fraction_t* frac4 = new fraction_t;
-	std::cout                               //  без ініціалізації бачимо випадклві числа
+	// за допомогою конструкторів з параметрами можна задавати початкові значення
+	fraction_t frac3(10);
+	fraction_t* frac4 = new fraction_t(1, 10);
+	std::cout
 		<< frac3.to_string() << std::endl
 		<< frac4->to_string() << std::endl;
 
-	fraction_t frac5 (1, 2, (char*)"Half");
+	fraction_t frac5(1, 2, new char[] {"Half"});
 	fraction_t* frac6 = new fraction_t(frac5);
 	std::cout
 		<< frac5.to_string() << std::endl
 		<< frac6->to_string() << std::endl;
+
+	fraction_t d = std::move(fraction_t::decil());
+	std::cout << d.to_string() << std::endl;
+
+	std::cout
+		<< frac5.to_string() << " + " << d.to_string()
+		<< " = " << (frac5 + d).to_string() << std::endl;
+
+	std::cout
+		<< frac5.to_string() << " - " << d.to_string()
+		<< " = " << (frac5 - d).to_string() << std::endl;
+
 
 	delete frac2;
 	delete frac4;
