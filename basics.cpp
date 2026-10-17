@@ -1,8 +1,16 @@
 #include <iostream>
 #include "basics.h"
+#include "Laptop.h"
 
 void basics() {
 	std::cout << "OOP Basics" << std::endl;
+	Laptop* acer = new Laptop();
+	acer->setName("Acer Nitro");
+	acer->setPrice(60499);
+	acer->setPower(90);
+	acer->setHardware("Intel Core 5, RAM 16GB, SSD 512GB");
+
+	std::cout << acer->toString() << std::endl;
 }
 
 /*
