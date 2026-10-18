@@ -13,6 +13,6 @@ double Product::getPrice() const {
 	return price;
 }
 
-void Product::setPrice(double name) {
+void Product::setPrice(double price) {
 	this->price = price;
 }
