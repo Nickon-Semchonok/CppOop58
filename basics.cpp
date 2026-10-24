@@ -1,17 +1,32 @@
 #include <iostream>
 #include "basics.h"
-#include "Laptop.h"
+
 
 void basics() {
 	std::cout << "OOP Basics" << std::endl;
-	Laptop* acer = new Laptop();
-	acer->setName("Acer Nitro");
-	acer->setPrice(60499);
-	acer->setPower(90);
-	acer->setHardware("Intel Core 5, RAM 16GB, SSD 512GB");
+	// Поліморфізм - поєднання до єдиного масиву (колекції)
+	// об'єктів різного типу. Формально, об'єкти мають
+	// тип (базового класу), при цьому фактично є об'єктами 
+	// похідних (дочірніх) типів
+	Product* stock[2];
 
-	std::cout << acer->toString() << std::endl;
+	stock[0] = (new Laptop())
+		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
+		->setPower(90)
+		->setName("Acer Nitro")
+		->setPrice(60499);
+	stock[1] = (new Monitor())
+		->setDiagonal(32)
+		->setPower(120)
+		->setName("Dell Vision")
+		->setPrice(7950);
+
+	for (auto product : stock) {
+		std::cout << product ->toString() << std::endl;
+	}
+
 }
+
 
 /*
 Основні принципи ООП.
@@ -62,4 +77,18 @@ void basics() {
 Спадкування - механізм реалізації абстрагування - створеннч класів на 
 базі інших класів з їх розширенням. Дочірній клас (нащадок) повністю
 включає в себе батьківський клас і може додавати власні елементи
+--------------
+Віртуальні методи
+Різниця між віртуальними та не віртуальними методами виникає коло тип
+даних посилання на об'єкт та тип самого об'єкта не є однаковим.
+(посилання через батьківський єлемент)
+Electrical* stock = new Laptop()
+тип посилання (stok) - Electrical*
+тип об'єкту - Laptop*
+Віртуальні методи виктикаються у об'єкта
+	stok->v -- Laptop::v
+Невіртуальні методи - за типом даних
+	stok->nv() -- Electrical::nv
+Невіртуальні методи створюються за замовчанням,
+для створення віртуальних необхідно додати оператор "virtual"
 */

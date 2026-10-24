@@ -146,6 +146,7 @@
     <ClCompile Include="fraction.cpp" />
     <ClCompile Include="intro.cpp" />
     <ClCompile Include="Laptop.cpp" />
+    <ClCompile Include="Monitor.cpp" />
     <ClCompile Include="Product.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,8 @@
     <ClInclude Include="fraction.h" />
     <ClInclude Include="intro.h" />
     <ClInclude Include="Laptop.h" />
+    <ClInclude Include="Monitor.h" />
+    <ClInclude Include="Periphery.h" />
     <ClInclude Include="Product.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
