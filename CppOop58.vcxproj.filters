@@ -36,6 +36,9 @@
     <ClCompile Include="Laptop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="data_structures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fraction.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Laptop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
