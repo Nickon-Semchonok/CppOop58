@@ -20,6 +20,32 @@ void data_structures() {
     catch (const std::range_error& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
+
+    try {
+        std::cout << "removed: " << intList->remove(2) << std::endl;
+        intList->print();
+        std::cout << "removed: " << intList->remove(2) << std::endl;
+        intList->print();
+        std::cout << "removed: " << intList->remove(1) << std::endl;
+        intList->print();
+        std::cout << "removed: " << intList->remove(6) << std::endl;
+        intList->print();
+        std::cout << "removed: " << intList->remove(0) << std::endl;
+        intList->print();
+    }
+    catch (const std::out_of_range& ex) {
+        std::cerr << "Exception" << ex.what() << std::endl;
+    }
+    Queue<int> queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    try { while (true) std::cout << queue.dequeue() << std::endl; }
+    catch (...) {}
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    while (!queue.isEmpty()) std::cout << queue.dequeue() << std::endl;
 }
 
 template<typename T>   // Шаблонними можуть бути функції та типи (класи, структури)
@@ -55,29 +81,40 @@ void data_structures_3() {
     std::cout << queue.dequeue() << std::endl;
     std::cout << queue.dequeue() << std::endl;
 }
-
+/*
 void data_structures_2() {
-    std::cout << "Data structures" << std::endl;
-    LinkedList<int>* intList = new LinkedList<int>();
-    intList->add(10);
-    intList->add(20);
-    intList->add(30);
-    intList->print();
-    intList->insertBefore(5, 0);
-    intList->print();
-    intList->insertBefore(15, 2);
-    intList->print();
-    std::cout << "removed: " << intList->remove(2) << std::endl;
-    intList->print();
-    std::cout << "removed: " << intList->remove(2) << std::endl;
-    intList->print();
-    std::cout << "removed: " << intList->remove(1) << std::endl;
-    intList->print();
-    std::cout << "removed: " << intList->remove(1) << std::endl;
-    intList->print();
-    std::cout << "removed: " << intList->remove(0) << std::endl;
-    intList->print();
+    try {
+        std::cout << "Data structures" << std::endl;
+        LinkedList<int>* intList = new LinkedList<int>();
+        intList->add(10);
+        intList->add(20);
+        intList->add(30);
+        intList->print();
+        intList->insertBefore(5, 0);
+        intList->print();
+        intList->insertBefore(15, 2);
+        intList->print();
+    }
+    catch (const std::out_of_range& ex) {
+        std::cerr << "Exception" << ex.what() << std::endl;
+    }
+    try {
+        std::cout << "removed: " << intList->remove(2) << std::endl;
+        intList->print();
+        std::cout << "removed: " << intList->remove(2) << std::endl;
+        intList->print();
+        std::cout << "removed: " << intList->remove(1) << std::endl;
+        intList->print();
+        std::cout << "removed: " << intList->remove(6) << std::endl;
+        intList->print();
+        std::cout << "removed: " << intList->remove(0) << std::endl;
+        intList->print();
+    }
+    catch (const std::out_of_range& ex) {
+        std::cerr << "Exception" << ex.what() << std::endl;
+    }
 }
+*/
 
 void data_structures_t() {
     std::cout << "Templates" << std::endl;
