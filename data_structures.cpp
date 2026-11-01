@@ -14,7 +14,7 @@ void data_structures() {
     try {
         intList->insertBefore(5, 0);  // у тіті insertBefore є throw
         intList->print();             // але порша команда не створить виняток
-        intList->insertBefore(15, 2); // тоді як другв - створить
+        intList->insertBefore(15, 5); // тоді як другв - створить
         intList->print();             // і виконання зупиниться перед даним рядком
     }
     catch (const std::range_error& ex) {
@@ -45,7 +45,7 @@ struct fraction {      // Для типів (наприклад, структу�
         numerator = n;
     }
 };
-void data_structures() {
+void data_structures_3() {
     std::cout << "Queue demo" <<std::endl;
     Queue<int> queue;
     queue.enqueue(1);
