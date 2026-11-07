@@ -111,7 +111,7 @@ void data_structures_3() {
     std::cout << queue.dequeue() << std::endl;
     std::cout << queue.dequeue() << std::endl;
 }
-
+/*
 void data_structures_2() {
     std::cout << "Data structures" << std::endl;
     LinkedList<int>* intList = new LinkedList<int>();

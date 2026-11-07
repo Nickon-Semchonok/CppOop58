@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdexcept>
 
+
 template<typename T>
 struct ListNode {
 	T data;
