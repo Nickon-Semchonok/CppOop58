@@ -5,48 +5,77 @@
 #include <stdexcept>
 
 void data_structures() {
+    LinkedList<int>* intList =
+        new LinkedList<int>();
+    // intList->add(10);   
+    // intList->add(20);   
+    // intList->add(30);   
+    intList->print();
+    // створюємо копію (клон)
+    LinkedList<int>* intList2 =
+        intList->clone();
+    // виводимо
+    intList2->print();
+    // перевіряємо відсутність зв'язків
+    intList->insertBefore(51, 0);  // щось змінюємо у 
+    intList2->insertBefore(52, 0); // кожному зі списків
+    std::cout << "list1:" << std::endl;
+    intList->print();
+    std::cout << "list2:" << std::endl;
+    intList2->print();
+    std::cout << "--------------" << std::endl;
+    Queue<int> queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    Queue<int> queue2 = std::move(queue);
+    while (!queue2.isEmpty()) {
+        std::cout << queue2.dequeue() << std::endl;
+    }
+}
+
+void data_structures_4() {
     // Демонстрація виняткових ситуацій
     LinkedList<int>* intList = new LinkedList<int>();
-    intList->add(10);   // ці команди не мають
-    intList->add(20);   // винятків в середині і не
-    intList->add(30);   // повинні вміщуватись в
-    intList->print();   // блок try
+    intList->add(10);   // ці команди не мають 
+    intList->add(20);   // винятків в середині і не 
+    intList->add(30);   // повинні вміщуватись в блок try
+    intList->print();   // 
     try {
-        intList->insertBefore(5, 0);  // у тіті insertBefore є throw
-        intList->print();             // але порша команда не створить виняток
-        intList->insertBefore(15, 5); // тоді як другв - створить
+        intList->insertBefore(5, 0);  // у тілі insertBefore є throw
+        intList->print();             // але перша команда не створить виняток
+        intList->insertBefore(15, 5); // тоді як друга - створить
         intList->print();             // і виконання зупиниться перед даним рядком
     }
     catch (const std::range_error& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
-
+    // intList->insertBefore(15, 5);  виклик без try призводить до 
+    // intList->print();              аварійної зупинки програми.
     try {
-        std::cout << "removed: " << intList->remove(2) << std::endl;
-        intList->print();
-        std::cout << "removed: " << intList->remove(2) << std::endl;
-        intList->print();
-        std::cout << "removed: " << intList->remove(1) << std::endl;
-        intList->print();
-        std::cout << "removed: " << intList->remove(6) << std::endl;
-        intList->print();
-        std::cout << "removed: " << intList->remove(0) << std::endl;
-        intList->print();
+        intList->remove(10);
     }
-    catch (const std::out_of_range& ex) {
-        std::cerr << "Exception" << ex.what() << std::endl;
+    catch (const std::range_error& ex) {
+        std::cerr << "Exception: " << ex.what() << std::endl;
     }
     Queue<int> queue;
     queue.enqueue(1);
     queue.enqueue(2);
     queue.enqueue(3);
-    try { while (true) std::cout << queue.dequeue() << std::endl; }
-    catch (...) {}
+    // Вилучення всіх даних з черги
+    // Варіант з винятком - не рекомендований
+    try { while (true)  std::cout << queue.dequeue() << std::endl; }
+    catch (...) {}   // варіант з ігноруванням винятку
     queue.enqueue(1);
     queue.enqueue(2);
     queue.enqueue(3);
-    while (!queue.isEmpty()) std::cout << queue.dequeue() << std::endl;
+    // варіант без винятків
+    while (!queue.isEmpty())  std::cout << queue.dequeue() << std::endl;
 }
+/*
+Д.З. Ввести винятки в методи класу Стек (предмет попередніх ДЗ)
+Прикласти скріншоти прикладів їх перевірки.
+*/
 
 template<typename T>   // Шаблонними можуть бути функції та типи (класи, структури)
 void print(T arg) {    // Шаблон вводить "змінну" для типу, традиційно "Т"
@@ -71,8 +100,9 @@ struct fraction {      // Для типів (наприклад, структу�
         numerator = n;
     }
 };
+
 void data_structures_3() {
-    std::cout << "Queue demo" <<std::endl;
+    std::cout << "Queue demo" << std::endl;
     Queue<int> queue;
     queue.enqueue(1);
     queue.enqueue(2);
@@ -83,38 +113,27 @@ void data_structures_3() {
 }
 /*
 void data_structures_2() {
-    try {
-        std::cout << "Data structures" << std::endl;
-        LinkedList<int>* intList = new LinkedList<int>();
-        intList->add(10);
-        intList->add(20);
-        intList->add(30);
-        intList->print();
-        intList->insertBefore(5, 0);
-        intList->print();
-        intList->insertBefore(15, 2);
-        intList->print();
-    }
-    catch (const std::out_of_range& ex) {
-        std::cerr << "Exception" << ex.what() << std::endl;
-    }
-    try {
-        std::cout << "removed: " << intList->remove(2) << std::endl;
-        intList->print();
-        std::cout << "removed: " << intList->remove(2) << std::endl;
-        intList->print();
-        std::cout << "removed: " << intList->remove(1) << std::endl;
-        intList->print();
-        std::cout << "removed: " << intList->remove(6) << std::endl;
-        intList->print();
-        std::cout << "removed: " << intList->remove(0) << std::endl;
-        intList->print();
-    }
-    catch (const std::out_of_range& ex) {
-        std::cerr << "Exception" << ex.what() << std::endl;
-    }
+    std::cout << "Data structures" << std::endl;
+    LinkedList<int>* intList = new LinkedList<int>();
+    intList->add(10);
+    intList->add(20);
+    intList->add(30);
+    intList->print();
+    intList->insertBefore(5, 0);
+    intList->print();
+    intList->insertBefore(15, 2);
+    intList->print();
+    std::cout << "removed: " << intList->remove(2) << std::endl;
+    intList->print();
+    std::cout << "removed: " << intList->remove(2) << std::endl;
+    intList->print();
+    std::cout << "removed: " << intList->remove(1) << std::endl;
+    intList->print();
+    std::cout << "removed: " << intList->remove(0) << std::endl;
+    intList->print();
+    std::cout << "removed: " << intList->remove(0) << std::endl;
+    intList->print();
 }
-*/
 
 void data_structures_t() {
     std::cout << "Templates" << std::endl;
