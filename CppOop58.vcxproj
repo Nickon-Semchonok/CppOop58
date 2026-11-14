@@ -146,7 +146,6 @@
     <ClCompile Include="fraction.cpp" />
     <ClCompile Include="intro.cpp" />
     <ClCompile Include="Laptop.cpp" />
-    <ClCompile Include="linked_list.cpp" />
     <ClCompile Include="Monitor.cpp" />
     <ClCompile Include="Product.cpp" />
   </ItemGroup>

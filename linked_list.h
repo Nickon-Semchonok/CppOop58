@@ -34,7 +34,7 @@ public:
 			delete node;
 			node = first;
 		}
-		first = last = NULL
+		first = last = NULL;
 	}
 
 	LinkedList() : first{ NULL }, last{ NULL }, size{ 0 } {
@@ -87,6 +87,20 @@ public:
 			first = first->next;
 			delete last;
 		}
+	}
+
+	T& operator[](size_t index) {
+		ListNode<T>* node = this->first;
+		while (node && index > 0) {
+			node = node->next;
+			index--;
+		}
+		if (node == NULL) {
+			throw std::range_error(
+				std::format("LinkedList<T>::operator[]: Unable to find element. Max list index {} but got {}", size - 1, index)
+			);
+		}
+		return node->data;
 	}
 };
 
